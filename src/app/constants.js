@@ -2,7 +2,7 @@ export const INFORMATION = {
   avatar:
     "https://res.cloudinary.com/dgq6qxh4k/image/upload/v1689696148/Lima_oedmeh.png",
   banner:
-    "https://res.cloudinary.com/dw5swolsy/image/upload/v1689892519/Pastel_Rosa_B%C3%ADgaro_y_Blanco_Salones_Reapertura_Comercial_Horizontal_P%C3%B3ster_xes9s3_tcvt6l.png",
+    "https://res.cloudinary.com/dw5swolsy/image/upload/v1693507694/Rustic_Minimal_Wedding_Print_Banner_tqmypm.png",
   title: "Lima Boutique",
   description: "",
   phone: "5493404438300",
