@@ -1,8 +1,36 @@
 import React from "react";
-import { Box, Stack, Image, Heading, Text, Flex, Link } from "@chakra-ui/react";
+import {
+  Box,
+  Stack,
+  Image,
+  Heading,
+  Text,
+  Flex,
+  Link,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+  Button,
+  useDisclosure,
+  Table,
+  Thead,
+  Tbody,
+  Tfoot,
+  Tr,
+  Th,
+  Td,
+  TableCaption,
+  TableContainer,
+} from "@chakra-ui/react";
 import { INFORMATION } from "../app/constants";
 
 const Header = () => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
   return (
     <Stack spacing={8} marginBottom={8}>
       <Stack marginBottom={4} spacing={2}>
@@ -45,7 +73,7 @@ const Header = () => {
             <Text color="gray.500" fontSize="md" fontWeight="500">
               {INFORMATION.description}
             </Text>
-            <Stack direction="row">
+            <Stack direction="row" alignItems="center" gap={2}>
               {INFORMATION.social.map((social) => {
                 return (
                   <Link key={social.name} isExternal href={social.url}>
@@ -65,6 +93,77 @@ const Header = () => {
                   </Link>
                 );
               })}
+              <Button onClick={onOpen} variant="link" color="#CE6857">
+                Tabla de talles
+              </Button>
+
+              <Modal isOpen={isOpen} onClose={onClose}>
+                <ModalOverlay />
+                <ModalContent>
+                  <ModalHeader>Tabla de Talles</ModalHeader>
+                  <ModalCloseButton />
+                  <ModalBody>
+                    <TableContainer>
+                      <Table variant="simple">
+                        <TableCaption>
+                          Ante cualquier duda escribinos a nuestro WhatsApp
+                        </TableCaption>
+                        <Thead>
+                          <Tr>
+                            <Th>Talle</Th>
+                            <Th>Pecho</Th>
+                            <Th>Cadera</Th>
+                          </Tr>
+                        </Thead>
+                        <Tbody>
+                          <Tr>
+                            <Td>S</Td>
+                            <Td>85-90</Td>
+                            <Td>78-84</Td>
+                          </Tr>
+                          <Tr>
+                            <Td>M</Td>
+                            <Td>90-95</Td>
+                            <Td>84-90</Td>
+                          </Tr>
+                          <Tr>
+                            <Td>L</Td>
+                            <Td>95-100</Td>
+                            <Td>90-96</Td>
+                          </Tr>
+                          <Tr>
+                            <Td>XL</Td>
+                            <Td>100-105</Td>
+                            <Td>97-103</Td>
+                          </Tr>
+                          <Tr>
+                            <Td>XXL</Td>
+                            <Td>105-110</Td>
+                            <Td>103-109</Td>
+                          </Tr>
+                          <Tr>
+                            <Td>3XL</Td>
+                            <Td>112-120</Td>
+                            <Td>109-115</Td>
+                          </Tr>
+                        </Tbody>
+                      </Table>
+                    </TableContainer>
+                  </ModalBody>
+
+                  <ModalFooter>
+                    <Button
+                      bgColor="#CE6857"
+                      color="white"
+                      _hover={{ bgColor: "#CE6857", color: "white" }}
+                      mr={3}
+                      onClick={onClose}
+                    >
+                      Cerrar
+                    </Button>
+                  </ModalFooter>
+                </ModalContent>
+              </Modal>
             </Stack>
           </Stack>
         </Stack>
