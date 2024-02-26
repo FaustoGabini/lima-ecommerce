@@ -33,6 +33,8 @@ const CartDrawer = ({
     );
   }, [items]);
 
+
+
   const text = useMemo(() => {
     /* Solo se va a renderizar cuando cambie el card */
     return items
@@ -48,14 +50,17 @@ const CartDrawer = ({
       .concat(`\nTotal: ${total}`);
   }, [items, total]);
 
+ 
+
   useEffect(() => {
     if (items.length === 0) {
       onClose();
     }
   }, [items.length, onClose]);
 
+
   return (
-    <Drawer isOpen={isCartOpen} placement="right" onClose={onClose} size="sm">
+    <Drawer isOpen={isCartOpen} placement="right" onClose={onClose} size="md">
       <DrawerOverlay />
       <DrawerContent>
         <DrawerCloseButton />
@@ -79,7 +84,8 @@ const CartDrawer = ({
                         fontWeight="500"
                         alignItems="center"
                       >
-                        <Text fontSize="lg">{product.title}</Text>
+                        <Image  src={product.image} width="60px" borderRadius="sm"/>
+                        <Text fontSize="lg" >{product.title}</Text>
                         <Text>
                           {parseCurrency(product.price * product.cantidad)}
                         </Text>
@@ -87,7 +93,9 @@ const CartDrawer = ({
                       <Stack direction="row">
                         <Button
                           borderRadius="999"
-                          colorScheme="primary"
+                          backgroundColor="#CE6857"
+                          color="white"
+                          _hover={{ bg: "#9D4637" }}
                           size="xs"
                           onClick={() => {
                             onDecrement(product);
@@ -97,7 +105,9 @@ const CartDrawer = ({
                         </Button>
                         <Text fontWeight="500">{product.cantidad}</Text>
                         <Button
-                          colorScheme="primary"
+                         backgroundColor="#CE6857"
+                          color="white"
+                          _hover={{ bg: "#9D4637" }}
                           borderRadius="999"
                           size="xs"
                           onClick={() => {

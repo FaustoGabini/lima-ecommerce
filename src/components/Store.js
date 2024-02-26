@@ -26,7 +26,12 @@ const Store = () => {
     });
   }, []);
 
+
+
   const handleAddToCart = (product) => {
+
+    console.log(product)
+
     setCart((cart) => {
       const isInCart = cart.some((item) => item.id === product.id);
       if (isInCart) {

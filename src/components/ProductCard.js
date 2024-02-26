@@ -1,8 +1,16 @@
-import React from "react";
+import React, {useState, useMemo} from "react";
 import { Stack, Image, Text, Button } from "@chakra-ui/react";
 import BagIcon from "../icons/BagIcon";
 
 export default function ProductCard({ product, onAdd }) {
+  const [isHovered, setIsHovered] = useState(false);
+  const productImage = useMemo(() => {
+   
+    return isHovered ? product.image2 : product.image;
+  }, [isHovered, product.image, product.image2]);
+
+
+  
   return (
     <Stack
       key={product.id}
@@ -13,6 +21,8 @@ export default function ProductCard({ product, onAdd }) {
       justifyContent="center"
       alignItems="center"
       width="100%"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
     >
       <Stack direction="column" padding={2} spacing={4} width="100%">
         <Stack position="relative">
@@ -22,7 +32,7 @@ export default function ProductCard({ product, onAdd }) {
             loading="lazy"
             minWidth={{ base: 24, sm: 36 }}
             objectFit="contain"
-            src={product.image}
+            src={productImage}
             width="100%"
           />
           <Button
